@@ -18,10 +18,16 @@ int main()
         int rows_start = 0, cols_start = 0, i,rows_end=rows,cols_end=cols;
         while (rows_start < rows_end && cols_start < cols_end)
         {
+            /* Print the first row from
+               the remaining rows */
+            
             for (int i = cols_start; i < cols_end; i++)
                 cout << arr[rows_start][i]<<" ";
 
             rows_start++;
+            
+            /* Print the last column
+              from the remaining columns */
 
             for (int i = rows_start; i < rows_end; i++)
                 cout << arr[i][cols_end-1]<<" ";
@@ -30,12 +36,18 @@ int main()
 
             if (rows_start < rows_end)
             {
+                /* Print the last row from
+                the remaining rows */
+                
                 for (int i = cols_end-1; i >= cols_start; i--)
                     cout << arr[rows_end-1][i]<<" ";
                 rows_end--;
             }
             if (cols_start < cols_end)
             {
+                /* Print the first column from
+                   the remaining columns */
+                
                 for (int i = rows_end-1; i >= rows_start; i--)
                     cout << arr[i][cols_start]<<" ";
                 cols_start++;
