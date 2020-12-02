@@ -10,4 +10,6 @@ Node* lca(Node* root ,int n1 ,int n2 )
     rnode = lca(root->right, n1, n2);
     if(lnode && rnode)
     return root;
+   
+   return (lnode != NULL) ? lnode : rnode;
 }
