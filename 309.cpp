@@ -1,60 +1,45 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-
+int main()
+{
     int t;
-    cin>>t;
-    while(t--){
-        
+    cin >> t;
+    while (t-- > 0)
+    {
         int n;
-        cin>>n;
-        
-        vector<char> ch(n);
-        
-        for(int i=0;i<n;i++){
-            cin>>ch[i];
-        }
-        
-        int freq[26];
-        
-        for(int i=0;i<26;i++){
-            
-            freq[i]=0;
-        }
-        
+        cin >> n;
+        char a[n];
+
+        for (int i = 0; i < n; i++)
+            cin >> a[i];
+
         queue<char> q;
-        
-        for(int i=0;i<n;i++){
-            
-            // Increase frequency of current element
-            freq[ch[i]-'a']++;
-            
-            // Push it into the queue
-            q.push(ch[i]);
-            
-            while(!q.empty()){
-                
-                // Try element in front of the queue
-                
-                // If it's frequency>1 it can't be non repeating pop it out and try next one
-                if(freq[q.front()-'a']>1){
+        map<char, int> m;
+
+        for (char c : a)
+            m[c] = 0;
+
+        for (char c : a)
+        {
+            m[c]++;
+            q.push(c);
+
+            while (!q.empty())
+            {
+                if (m[q.front()] > 1)
                     q.pop();
+                else
+                {
+                    cout << q.front() << " ";
+                     break;
                 }
-                // Freq=1 so print and break
-                else{
-                    cout<<q.front()<<" ";
-                    break;
-                }
-                
             }
-            // Can't find any non repeating character
-            if(q.empty()){
-                cout<<-1<<" ";
-            }
-            
+            if (q.empty())
+                cout << -1 << " ";
         }
-        cout<<endl;
+        cout << endl;
     }
-	
+    return 0;
 }
+	
